@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>video editor</title>
+	<link rel="stylesheet" href="layout.css">
+	<link href="jquery/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body> 
+	<div id="filed1">
+		<div id="div1">
+			<video id="player" src="" controls></video>
+		</div>
+	    <div id="div2">
+	    	<ul>
+	    		<li>
+	    			<a href="#" id="link1">Video1</a>
+	    		</li>
+	    		<li>
+	    			<a href="#" id="link2">Video2</a>
+	    		</li>
+	    		<li>
+	    			<a href="#" id="link3">Video3</a>
+	    		</li>
+	    	</ul>
+	    </div>
+	</div>
+	<hr>
+	<div id="filed2">
+	    <div id="div3">
+	    	<form action="">
+	    	 start time: <input id="st" type="text">
+             end time: <input id="et" type="text">
+	    	</form>
+	        <div id='slider1' style="margin:20px"></div>
+	        <div id='slider2' style="margin:20px"></div>	
+	        <div id='slider3' style="margin:20px"></div>
+
+	        <canvas id="cav" ></canvas>	
+	        
+	    </div>
+	    <div id="div4">
+	    	<button>startup</button>
+	    	<button>resource list</button>
+	    	<button>resource stream</button>
+	    	<button>step play</button>
+	    	<button>view play</button>
+	    	<button>Output</button>
+	    </div>
+	</div>
+	 
+
+     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
+     <script src="jquery/jquery-ui.min.js"></script>
+     <script src="ai.js"></script>
+
+
+</body>
+</html>
