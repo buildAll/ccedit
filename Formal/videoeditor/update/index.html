@@ -2,49 +2,46 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Update Video Editor</title>
-	<link rel="stylesheet" href="style/layout.css">
+	<title>ccsing|cloud editing</title>
 	<link rel="stylesheet" href="style/jquery-ui.min.css">
-
+	<link rel="stylesheet" href="style/layout.css">
 </head>
 <body>
 	
    <div id="mainzone" class="zone">
+   	
      <div class="filed">
        <div id="playerzone">
             <video id="player" src="" controls></video>
        </div>
 	   <div id="galleryzone">
-	   	    <ul id="list">
-	   	    	<li><p>AAAA</p></li>
-	   	    	<li>BBBBBBBB</li>
-	   	    	<li>CCCCCCCCC</li>
-	   	    	<li>DDDDDDDDD</li>
-	   	    	<li>44444444</li>
-	   	    	<li><p>ASFAFSAFFSDAFSADF.mp4</p></li>
+	   	    <ul id="list" class="connectedSortable">
+	   	    	
+	
+
 	   	    </ul>
 	   </div>	
      </div>
 
      <div id="info">
-     	start time:
-     	end time:
-     	length:
+     	<span>start time:<input type="text"></span>
+     	<span>end time:<input type="text"></span>
+     	<span>length:<input type="text"> </span> 
      </div>
       
 	  <div class="filed">
-	  	    <div id="slider"></div>
+	  	   <div id="slider"></div>
      	<div id="editzone">
      		
      		<div id="order">	
-               <ul id="orderlist">
-	              
+               <ul id="orderlist" class="connectedSortable">
+	            
 	   	       	</ul>
      		</div>
      	</div>
 	    <div id="buttonzone">
-	    	<button>startup</button>
-	    	<button>resource list</button>
+	    	<button id="startBtn">startup</button>
+	    	<button id="resourceList">resource list</button>
 	    	<button>resource stream</button>
 	    	<button>step play</button>
 	    	<button>view play</button>
@@ -52,6 +49,7 @@
 	    </div>   
       </div>
    </div>	
+ 
 
      <script src="scripts/jquery/jquery-1.11.1.min.js"></script>
      <script src="scripts/jquery/jquery-ui.min.js"></script>

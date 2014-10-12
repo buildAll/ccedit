@@ -1,18 +1,18 @@
 
 body{
-	background-color: #63B9DE;
+	background-color: #505e6d;
 }
 
 li{
 	list-style-type: none;
 	margin: 20px;
-    border: solid 2px red;
-    width: 110px;
-    height: 35px;
+    width: 100px;
+    height: 40px;
     position: relative;
     right: 17px;
-    background-color:green;
-    padding: 35px 35px;
+    background-color:black;
+    color:white;
+    padding: 35px 40px;
     word-wrap: break-word;
 
 }
@@ -37,8 +37,8 @@ button{
 }
 /*css for zone and window start*/
 .zone div{
-	border: solid 5px red;
-	margin: 10px;
+	border: solid 1px #898585;
+	
 
 }
 
@@ -59,20 +59,23 @@ button{
 	height: 400px;
 	margin-left: 50px; 
 	float: left;
+	margin-top: 13px;
 }
 #galleryzone{
-	width: 240px;
+	width: 270px;
 	height: 400px;
 	float: right;
-	margin-right: 50px;
+	margin-right: 25px;
+	margin-left: 25px;
 	overflow-y:auto;
+	margin-top: 13px;
 
 }
 
 #editzone{
-	width: 800px;
-	height: 150px;
-	margin-left: 50px;
+	width: 805px;
+	height: 180px;
+	margin-left: 49px;
 	float: left;
 	overflow-x:auto;
 	overflow-y:hidden;
@@ -83,7 +86,7 @@ button{
 
 #buttonzone{
 	width: 200px;
-	height: 200px;
+	height: 180px;
 	float: right;
 	margin-right: 50px;
 	overflow-y:auto;
@@ -111,6 +114,8 @@ button{
    height: 50px;
    position: relative;
    left: 250px;
+   margin-top: 10px;
+   margin-bottom: 10px;
 
 }
 
@@ -119,7 +124,6 @@ button{
 /*css for zone and window end*/
 
 
-/*css for player*/
 #player{
 	background-color: black;
 	width: 700px;
@@ -130,12 +134,17 @@ button{
 #slider{
 	height: 40px;
 	width: 800px;
-	margin-left: 50px;
+    margin: 0px;
+    border:none;
+    position: relative;
+    left: 50px;
+    margin-bottom: 10px;
+    margin-top:10px;
 }
 
 #order{
-	height: 150px;
-	width: 2000px;
+	height: 160px;
+	width: 10000px;
 	overflow-x:auto;
 	margin: 0px;
 	border-top:5px;
@@ -145,27 +154,45 @@ button{
 	overflow-y:hidden;
 }
 
-/*
-#order li{
-	display: inline;
-}
 
-
-#orderlist{
-	display: inline;
-}
-*/
 #orderlist li{
 	float: left;
 }
 
-
-
-
-
-
-.hovercss{
-	background-color: black;
+li:hover{
+	border: solid 5px #f0f0f0;
+    cursor: pointer;
 }
 
+
+#info span{
+	
+	float: left;
+	margin-top: 10px;
+	margin-right: 40px;
+	margin-left: 20px;
+}
+
+#info span:first-child{
+	margin-left: 50px;
+}
+
+input{
+	margin: 5px;
+}
+
+.ui-slider-handle{
+	color: black;
+    font-size: 0px;
+    padding: 20px 5px;
+    background-color: black;
+}
+
+.ui-slider-range{
+	color: black;
+    background-color: black;
+}
+
+.ui-widget-content { background: #c0c0c0; }
+.ui-widget-header{ background: #4256dc; }
 
