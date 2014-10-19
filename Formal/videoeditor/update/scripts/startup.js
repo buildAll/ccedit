@@ -23,6 +23,9 @@ var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_ad
     this.getGalleryAddr = function() {
         this.galleryAddr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/resource.list?keyd=" + workDir;
     };
+    this.getStepPlayAddr = function(time) {
+        this.step_addr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/edit.step?keyd=" + workDir+ "&pos=" + time.toString();
+    }
 };
 var getSysInfo = function(res) {
     var json = JSON.parse(res);

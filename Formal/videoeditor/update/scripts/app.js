@@ -1,5 +1,7 @@
 var curSys = new sysInfo("00000456", "ddd", 100, 40, "192.168.100.233", 80);
 var gallery = new mediaGallery();
+var videoTrack = [];
+var audioTrack = [];
 
 var main = function() {
 
@@ -12,10 +14,14 @@ var main = function() {
     });
 
     //doClick.getEdit();
-    $(document).on('dblclick', '#orderlist li', function() {
+    $(document).on('dblclick', '.track li', function() {
         $(this).remove();
     });
-    moveGalleryitem(gallery);
+    moveGalleryitem(gallery,videoTrack,audioTrack);
+    editStream('#vidtrack', videoTrack,'#slider',curSys);
+    editStream('#audtrack', audioTrack,'#slider',curSys);
 
+    $("#vidtrack, #audtrack").sortable();
+    
 };
 $(document).ready(main);

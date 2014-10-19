@@ -179,7 +179,7 @@ var displaySlider = function(theMedia) {
     createSlider("#slider", theMedia);
 };
 var getStream = function(theMedia) {
-    $.ajax({
+    $.ajax({B
         //url: theMedia.streamAddress,
         url: "http://localhost/quick/streamlist.php",
         success: function(res) {

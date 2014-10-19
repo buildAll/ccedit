@@ -1,5 +1,3 @@
-var videoTrack = [];
-var audioTrack = [];
 var stream = function(name, dur, type, startTime, endTime, len, editID, fileID, fileName) {
     this.name = name;
     this.duration = dur;
@@ -40,16 +38,14 @@ var media = function(fileName, fileID, fileStreamAddr, fileHtml) {
         $(this.fileHtml).appendTo('#list').draggable({
             appendTo: "body",
             helper: "clone",
-            scope: "d1",
             cursor: 'pointer',
             opacity: 0.50,
-            connectToSortable: "#orderlist",
-            containment: '#mainzone',
+            containment: 'document',
             drag: function() {
-                $('#editzone').css("background-color", "#8bff9a");
+                //$('#editzone').css("background-color", "#8bff9a");
             },
             stop: function() {
-                $('#editzone').css("background-color", "#63B9DE");
+                //$('#editzone').css("background-color", "#63B9DE");
             }
         });
     };

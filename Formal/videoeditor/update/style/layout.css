@@ -35,17 +35,17 @@ button {
 /*css for zone and window start*/
 
 .zone div {
-    border: solid 1px #898585;
+    
 }
 #mainzone {
     overflow-y: auto;
     position: relative;
     left: 50px;
     right: 30px;
-    /*border: solid 5px red;*/
+    border: solid 5px red;
 
-width: 1800px;
-    height: 900px;
+    width: 1800px;
+    height: 1200px;
     text-align: center;
     margin-top: 50px;
 }
@@ -67,7 +67,7 @@ width: 1800px;
 }
 #editzone {
     width: 805px;
-    height: 180px;
+    height: 300px;
     margin-left: 49px;
     float: left;
     overflow-x: auto;
@@ -80,6 +80,8 @@ width: 1800px;
     float: right;
     margin-right: 50px;
     overflow-y: auto;
+    position: relative;
+    top: -250px;
 }
 .filed {
     position: relative;
@@ -91,8 +93,10 @@ width: 1800px;
     height: 430px;
 }
 .filed:last-child {
-    width: 1200px;
-    height: 300px;
+    width: 1500px;
+    height: 600px;
+    position: relative;
+    left: 7%;
 }
 #info {
     width: 1200px;
@@ -110,12 +114,12 @@ width: 1800px;
     height: 400px;
 }
 #slider {
-    height: 40px;
-    width: 800px;
+    height: 60px;
+    width: 1160px;
     margin: 0px;
     border: none;
     position: relative;
-    left: 50px;
+    left: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -133,6 +137,7 @@ width: 1800px;
 #orderlist li {
     float: left;
 }
+/*
 #orderlist:after {
     clear: both;
     content: '.';
@@ -143,7 +148,7 @@ width: 1800px;
     visibility: hidden;
     padding: 0;
     margin: 0;
-}
+}*/
 li:hover {
     border: solid 5px #f0f0f0;
     cursor: pointer;
@@ -166,9 +171,11 @@ input {
 .ui-slider-handle {
     color: black;
     font-size: 0px;
-    padding: 20px 5px;
+    padding: 30px 0px;
     background-color: black;
 }
+
+
 .ui-slider-range {
     color: black;
     background-color: black;
@@ -189,11 +196,26 @@ input {
 
 .track{
     border: solid 3px yellow;
-    margin: 10px;
-    width: 1300px;
-    height: 200px;
+    border-left: none;
+    border-right: none;
+    margin-top: 0px;
+    width: 9000px;
+    height: 150px;
 }
 
 .track li {
     float: left;
+}
+
+#trackzone{
+    width: 1150px;
+    height:320px;
+    border: solid 5px yellow;
+    border-top: none;
+    border-bottom: none;
+    margin-left: 10px;
+}
+
+.putslider{
+    overflow-x: auto;
 }

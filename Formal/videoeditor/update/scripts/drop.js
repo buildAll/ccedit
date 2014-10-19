@@ -1,24 +1,19 @@
-var afterDrop = function(gallery,ui) {
+var afterDrop = function(gallery, ui, vt, at) {
     var contextBeDragging = ui.draggable.text();
-    console.log(contextBeDragging);
-    console.log("*******************");
-    console.log(gallery.items);
-    console.log(gallery.count);
     $.each(gallery.items, function(i, thisMedia) {
-        if (i >= 0) {///////////////////
-            console.log(thisMedia.fileName);
-             console.log(thisMedia.fileStreamGrp);
+        if (i >= 0) { ///////////////////
             if (contextBeDragging === thisMedia.fileName) {
                 $.each(thisMedia.fileStreamGrp, function(i, thisStream) {
-
                     switch (thisStream.type) {
                         case "video":
-                            videoTrack.push(JSON.parse(JSON.stringify(thisStream)));
-                            $("<li>" + thisStream.name + "<p id=\"hid\">" + "*" + thisStream.editID + "</p>" + "</li>").appendTo("#vidtrack");
+                            thisStream.editID = vt.length;
+                            vt.push(JSON.parse(JSON.stringify(thisStream)));
+                            $("<li>" + thisStream.name + "<p id=\"hid\">" + "*" + thisStream.type + thisStream.editID + "</p>" + "</li>").appendTo("#vidtrack");
                             break;
                         case "audio":
-                            audioTrack.push(JSON.parse(JSON.stringify(thisStream)));
-                            $("<li>" + thisStream.name + "<p id=\"hid\">" + "*" + thisStream.editID + "</p>" + "</li>").appendTo("#audtrack");
+                            thisStream.editID = at.length;
+                            at.push(JSON.parse(JSON.stringify(thisStream)));
+                            $("<li>" + thisStream.name + "<p id=\"hid\">" + "*" + thisStream.type + thisStream.editID + "</p>" + "</li>").appendTo("#audtrack");
                             break
                     }
                 });
@@ -26,24 +21,21 @@ var afterDrop = function(gallery,ui) {
             };
         };
     });
+     ui.draggable.clone().remove(); 
 };
-var moveGalleryitem = function(gallery) {
-    $('#orderlist').sortable({
+var moveGalleryitem = function(gallery, vt, at) {
+   /* $('#orderlist').sortable({
         axis: "x"
     });
     $('#list>li').draggable({
         helper: 'clone',
-        //connectToSortable: "#dest"
-    });
-    $('#order').droppable({
-        hoverClass: "put",
+    });*/
+    $('#order,#trackzone').droppable({
         tolerance: "touch",
         drop: function(event, ui) {
             if (true) {
-                afterDrop(gallery,ui);
+                afterDrop(gallery, ui, vt, at);               
             };
         }
     });
 };
-
-
