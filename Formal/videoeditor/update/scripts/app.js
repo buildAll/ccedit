@@ -2,7 +2,7 @@ var curSys = new sysInfo("00000456", "ddd", 100, 40, "192.168.100.233", 80);
 var gallery = new mediaGallery();
 var videoTrack = [];
 var audioTrack = [];
-var saveEdit = new output;
+var saveEdit = new output();
 
 var main = function() {
 
@@ -19,6 +19,11 @@ var main = function() {
         console.log(saveEdit.result);
         curSys.getConfigPutAddr();
         saveEdit.postResult(curSys.configPutAddr);
+    });
+
+    $(document).on('click', '#configget', function() {
+        getVideoConfig("http://localhost/quick/config.php",videoTrack);
+        getAudioConfig("http://localhost/quick/config.php",audioTrack);
     });
 
     //doClick.getEdit();

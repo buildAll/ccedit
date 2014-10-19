@@ -13,25 +13,25 @@ var getEditId = function(str) {
     });
     return id;
 };
-var createEditSlider = function(selector, theMedia,curSys) {
+var createEditSlider = function(selector, theStream, curSys) {
 	var vLeft;
 	var vRight;
     $(selector).slider({
         range: true,
         min: 0,
-        max: theMedia.duration,
-        values: [theMedia.startTime, theMedia.endTime],
+        max: theStream.duration,
+        values: [theStream.startTime, theStream.endTime],
         start: function(event, ui) {
             vLeft = ui.values[0];
             vRight = ui.values[1];
         },
         slide: function(event, ui) {
-            theMedia.startTime = ui.values[0];
-            theMedia.endTime = ui.values[1];
-            theMedia.len = ui.values[1] - ui.values[0];
-            $('#starttime').attr("value", theMedia.startTime);
-            $('#endtime').attr("value", theMedia.endTime);
-            $('#length').attr("value", theMedia.len);
+            theStream.startTime = ui.values[0];
+            theStream.endTime = ui.values[1];
+            theStream.len = ui.values[1] - ui.values[0];
+            $('#starttime').attr("value", theStream.startTime);
+            $('#endtime').attr("value", theStream.endTime);
+            $('#length').attr("value", theStream.len);
         },
         stop: function(event, ui) {
         	if (vLeft !== ui.values[0]) {
@@ -45,8 +45,8 @@ var createEditSlider = function(selector, theMedia,curSys) {
         }
     });
 };
-var showEidtSlider = function(sliderSelector, theMedia, curSys) {
-    createEditSlider(sliderSelector, theMedia, curSys);
+var showEidtSlider = function(sliderSelector, theStream, curSys) {
+    createEditSlider(sliderSelector, theStream, curSys);
 };
 var editStream = function(selector, track, slider, curSys) {
     var selector = selector + '>li';

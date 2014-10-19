@@ -26,8 +26,6 @@ var output = function() {
         });
     };
     this.getOutput = function(selectorVideo, trackVideo, selectorAudio, trackAudio) {
-    	console.log("become output");
-    	console.log(this.videoTrack);
         this.getTrack(selectorVideo, trackVideo, this.videoTrack);
         this.getTrack(selectorAudio, trackAudio, this.audioTrack);
         this.result.push({
