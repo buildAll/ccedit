@@ -182,3 +182,18 @@ input {
 .put {
     cursor: copy;
 }
+
+#hid{
+    font-size: 0px;
+}
+
+.track{
+    border: solid 3px yellow;
+    margin: 10px;
+    width: 1300px;
+    height: 200px;
+}
+
+.track li {
+    float: left;
+}
