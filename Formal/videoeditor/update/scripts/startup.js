@@ -1,4 +1,4 @@
-var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_addr, step_addr, startupAddr, reStartupAddr, galleryAddr) {
+var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_addr, step_addr, startupAddr, reStartupAddr, galleryAddr, configPutAddr) {
     this.workDir = workDir;
     this.resDir = resDir;
     this.width = width;
@@ -10,6 +10,7 @@ var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_ad
     this.startupAddr = startupAddr;
     this.reStartupAddr = reStartupAddr;
     this.galleryAddr = galleryAddr;
+    this.configPutAddr = configPutAddr;
     this.getIPnPort = function(ip, port) {
         this.srv_ip = ip;
         this.srv_port = port;
@@ -25,7 +26,10 @@ var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_ad
     };
     this.getStepPlayAddr = function(time) {
         this.step_addr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/edit.step?keyd=" + workDir+ "&pos=" + time.toString();
-    }
+    };
+    this.getConfigPutAddr = function(){
+        this.configPutAddr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/config.put?keyd=" + workDir
+    };
 };
 var getSysInfo = function(res) {
     var json = JSON.parse(res);

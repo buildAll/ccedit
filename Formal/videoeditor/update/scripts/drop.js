@@ -24,12 +24,6 @@ var afterDrop = function(gallery, ui, vt, at) {
      ui.draggable.clone().remove(); 
 };
 var moveGalleryitem = function(gallery, vt, at) {
-   /* $('#orderlist').sortable({
-        axis: "x"
-    });
-    $('#list>li').draggable({
-        helper: 'clone',
-    });*/
     $('#order,#trackzone').droppable({
         tolerance: "touch",
         drop: function(event, ui) {

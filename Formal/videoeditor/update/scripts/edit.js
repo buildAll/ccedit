@@ -65,6 +65,6 @@ var editStream = function(selector, track, slider, curSys) {
     });
 };
 
-var editSort = function() {
 
-};
+
+
