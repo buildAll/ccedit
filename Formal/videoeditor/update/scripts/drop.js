@@ -1,8 +1,15 @@
 var afterDrop = function(gallery, ui, vt, at) {
     var contextBeDragging = ui.draggable.text();
+    console.log(contextBeDragging);
+    var id = getEditId(contextBeDragging);
+    id = Number(id);
+    console.log(id);
     $.each(gallery.items, function(i, thisMedia) {
+        console.log(thisMedia.fileName); 
+        console.log(thisMedia.editID);
         if (i >= 0) { ///////////////////
-            if (contextBeDragging === thisMedia.fileName) {
+            if (id === thisMedia.editID) {
+                console.log("FUCKING AWESOME!");
                 $.each(thisMedia.fileStreamGrp, function(i, thisStream) {
                     switch (thisStream.type) {
                         case "video":

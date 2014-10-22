@@ -5,6 +5,7 @@ var stream = function(name, dur, type, startTime, endTime, len, editID, fileID, 
     this.startTime = startTime;
     this.endTime = endTime;
     this.len = len;
+    this.editID = editID;
     this.fileID = fileID;
     this.fileName = fileName;
     this.getLen = function() {
@@ -19,9 +20,10 @@ var stream = function(name, dur, type, startTime, endTime, len, editID, fileID, 
         this.getLen();
     };
 };
-var media = function(fileName, fileID, fileStreamAddr, fileHtml) {
+var media = function(fileName, fileID, editID, fileStreamAddr, fileHtml) {
     this.fileName = fileName;
     this.fileID = fileID;
+    this.editID = editID;
     this.fileStreamAddr = fileStreamAddr;
     this.fileStreamGrp = [];
     this.fileHtml = fileHtml;
@@ -29,7 +31,7 @@ var media = function(fileName, fileID, fileStreamAddr, fileHtml) {
         this.fileStreamAddr = "http://" + ip + ":" + port.toString() + "/stream.list?keyd=" + workDir + "\&fileid=" + this.fileID.toString();
     };
     this.getHtmlMedia = function() {
-        this.fileHtml = "<li><p>" + this.fileName + "</p></li>";
+        this.fileHtml = "<li><p>" + this.fileName + "<p id=\"hid\">" + "*" + this.editID + "</p>"+"</p></li>";
     };
     this.mediaDraggable = function() {
         if (typeof this.fileHtml !== "string") {
@@ -50,9 +52,10 @@ var media = function(fileName, fileID, fileStreamAddr, fileHtml) {
         });
     };
     this.getMediaStream = function(me) {
+        console.log(this.fileStreamAddr);
         $.ajax({
-            //url: this.fileStreamAddr,
-            url: "http://localhost/quick/streamlist.php",
+            url: this.fileStreamAddr,
+           // url: "http://localhost/quick/streamlist.php",
             success: function(res) {
                 var json = JSON.parse(res);
                 if (json.result === "OK") {
@@ -77,6 +80,7 @@ var mediaGallery = function(count) {
     this.items = [];
     this.count = count;
     this.getCount = function() {
+        console.log(this.items.length);
         this.count = this.items.length;
     }
 };
@@ -90,7 +94,8 @@ var initGallery = function(gallery, res) {
             gallery.items.push(new media());
             gallery.items[itemId].fileName = subarr[0];
             gallery.items[itemId].fileID = subarr[1];
-            gallery.items[itemId].getStreamAddr(curSys.srv_ip, curSys.srv_port, curSys.wordDir);
+            gallery.items[itemId].editID = itemId;
+            gallery.items[itemId].getStreamAddr(curSys.srv_ip, curSys.srv_port, curSys.workDir);
             gallery.items[itemId].getHtmlMedia();
             gallery.items[itemId].mediaDraggable();
             gallery.items[itemId].getMediaStream(gallery.items[itemId]);

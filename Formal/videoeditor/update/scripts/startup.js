@@ -1,4 +1,4 @@
-var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_addr, step_addr, startupAddr, reStartupAddr, galleryAddr, configPutAddr) {
+var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_addr, step_addr, startupAddr, reStartupAddr, galleryAddr, configPutAddr, configGetAddr) {
     this.workDir = workDir;
     this.resDir = resDir;
     this.width = width;
@@ -11,12 +11,13 @@ var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_ad
     this.reStartupAddr = reStartupAddr;
     this.galleryAddr = galleryAddr;
     this.configPutAddr = configPutAddr;
+    this.configGetAddr = configGetAddr;
     this.getIPnPort = function(ip, port) {
         this.srv_ip = ip;
         this.srv_port = port;
     };
     this.getStartupURL = function() {
-        this.startupAddr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/oledit.startup?keyd=" + this.workDir + "&startd=" + this.resDir + "\&width=" + this.width + " \&height=" + this.height;
+        this.startupAddr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/oledit.startup?keyd=" + this.workDir + "&startd=" + this.resDir + "\&width=" + this.width + "\&height=" + this.height;
     };
     this.getReStartupURL = function() {
         this.reStartupAddr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/oledit.startup?keyd=" + this.workDir;
@@ -30,6 +31,9 @@ var sysInfo = function(workDir, resDir, width, height, srv_ip, srv_port, view_ad
     this.getConfigPutAddr = function(){
         this.configPutAddr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/config.put?keyd=" + workDir
     };
+    this.getConfigGetAddr = function(){
+        this.configGetAddr = "http://" + this.srv_ip + ":" + this.srv_port.toString() + "/config.get?keyd=" + workDir
+    };
 };
 var getSysInfo = function(res) {
     var json = JSON.parse(res);
@@ -40,7 +44,8 @@ var getSysInfo = function(res) {
         curSys.step_addr = json.step_addr;
     } else {
         if (json.message === "keyd already exist") {
-            reStart(curSys.getReStartupURL());
+            curSys.getReStartupURL();
+            reStart(curSys.reStartupAddr);
         }
     }
 };
