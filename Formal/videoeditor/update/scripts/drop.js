@@ -9,7 +9,6 @@ var afterDrop = function(gallery, ui, vt, at) {
         console.log(thisMedia.editID);
         if (i >= 0) { ///////////////////
             if (id === thisMedia.editID) {
-                console.log("FUCKING AWESOME!");
                 $.each(thisMedia.fileStreamGrp, function(i, thisStream) {
                     switch (thisStream.type) {
                         case "video":

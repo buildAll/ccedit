@@ -1,9 +1,9 @@
-var doStartup = function(targetURL) {
+/*var getMediaFiles = function(targetURL, gallery) {
     if (targetURL !== "") {
         $.ajax({
             url: targetURL,
             success: function(res) {
-                getSysInfo(res);
+                gallery.initGallery(res);
             },
             error: function(xhr, desc, err) {
                 getErr(xhr, desc, err)
@@ -13,36 +13,8 @@ var doStartup = function(targetURL) {
         alert("invalid startup command!!");
     };
 };
-var getMediaFiles = function(targetURL, gallery) {
-    if (targetURL !== "") {
-        $.ajax({
-            url: targetURL,
-            success: function(res) {
-                initGallery(gallery, res);
-            },
-            error: function(xhr, desc, err) {
-                getErr(xhr, desc, err)
-            }
-        });
-    } else {
-        alert("invalid startup command!!");
-    };
-};
-var stepPlay = function(targetURL) {
-    if (targetURL !== "") {
-        $.ajax({
-            url: targetURL,
-            success: function(res) {
-                //TDO sth
-            },
-            error: function(xhr, desc, err) {
-                getErr(xhr, desc, err)
-            }
-        });
-    } else {
-        alert("invalid step play command!!");
-    };
-};
+*/
+
 var getVideoConfig = function(targetURL,track) {
     if (targetURL !== "") {
         $.ajax({
@@ -63,7 +35,7 @@ var getVideoConfig = function(targetURL,track) {
                         thisStream.type = "video";
                         thisStream.getLen();
                         thisStream.duration = thisStream.len;
-                        thisStream.editID = track.length;
+                        thisStream.editID = track.length - 1 ;
                         $("<li>" + thisStream.name + "<p id=\"hid\">" + "*" + thisStream.type + thisStream.editID + "</p>" + "</li>").appendTo("#vidtrack");
                     });
                 } else {
@@ -99,7 +71,7 @@ var getAudioConfig = function(targetURL,track) {
                         thisStream.type = "audio";
                         thisStream.getLen();
                         thisStream.duration = thisStream.len;
-                        thisStream.editID = track.length;
+                        thisStream.editID = track.length - 1;
                         $("<li>" + thisStream.name + "<p id=\"hid\">" + "*" + thisStream.type + thisStream.editID + "</p>" + "</li>").appendTo("#audtrack");
                     });
                     console.log(track);
@@ -115,5 +87,6 @@ var getAudioConfig = function(targetURL,track) {
         alert("can not getconfig!!");
     };
 };
+
 
 

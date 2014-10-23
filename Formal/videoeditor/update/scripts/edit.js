@@ -34,13 +34,30 @@ var createEditSlider = function(selector, theStream, curSys) {
             $('#length').attr("value", theStream.len);
         },
         stop: function(event, ui) {
+            curSys.getFilePlayURL(theStream.fileID, ui.values[0], ui.values[1]); 
+             
         	if (vLeft !== ui.values[0]) {
-        		curSys.getStepPlayAddr(ui.values[0]);
-        		stepPlay(curSys.step_addr);
+
+        		curSys.getStepPlayURL(theStream.fileID, theStream.name, ui.values[0]);
+                console.log(curSys.playURL);
+                console.log(curSys.stepPlayURL);
+                console.log(curSys.stopPlayURL);
+
+               // mycp.pause();
+                curSys.stopPlay();
+                mycp.play(curSys.playURL);
+        		curSys.stepPlay();
         	}
         	else if (vRight !== ui.values[1]) {
-        		curSys.getStepPlayAddr(ui.values[1]);
-        		stepPlay(curSys.step_addr);
+                
+        		curSys.getStepPlayURL(theStream.fileID, theStream.name, ui.values[1]);
+                console.log(curSys.playURL);
+                console.log(curSys.stepPlayURL);
+                console.log(curSys.stopPlayURL);
+               // mycp.pause();
+                curSys.stopPlay();
+                mycp.play(curSys.playURL)
+                curSys.stepPlay();
         	}
         }
     });

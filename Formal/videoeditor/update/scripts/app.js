@@ -4,38 +4,47 @@ var videoTrack = [];
 var audioTrack = [];
 var saveEdit = new output();
 
-var main = function() {
+var mycp = CCPlayer('flash_context',640,360);
 
+function cc_player_test(url){
+        /* 160,90    320,180    640,360 */
+        mycp = CCPlayer('flash_context',640,360);
+        //var url = document.getElementById('urltxt').value;
+        mycp.play(url);
+        mycp.setdbg(cc_player_on_debug);
+}
+
+var main = function() {
+    curSys.getStartupURL(); 
     $(document).on('click', '#startBtn', function() {
-         curSys.getStartupURL();
-         doStartup(curSys.startupAddr);
-         //console.log(curSys.startupAddr);
-         //doStartup("http://localhost/quick/startup.php");
+         //curSys.doStartup(curSys.startupURL);
+         curSys.doStartup("http://localhost/quick/startup.php");
+         mycp.play(curSys.playURL);
     });
      
     $(document).on('click', '#resourceList', function() {
-         curSys.getGalleryAddr();
-         getMediaFiles(curSys.galleryAddr,gallery);
-         console.log(curSys.galleryAddr);
-       //getMediaFiles("http://localhost/quick/resourcelist.php",gallery);
+         //gallery.addMediasToGallery(curSys.galleryURL);
+         gallery.addMediasToGallery("http://localhost/quick/resourcelist.php",gallery);
     });
     $(document).on('click', '#output', function() {
         saveEdit.getOutput('#vidtrack',videoTrack, '#audtrack',audioTrack);
         console.log(saveEdit.result);
-        curSys.getConfigPutAddr();
-        saveEdit.postResult(curSys.configPutAddr);
+        saveEdit.postResult(curSys.configPutURL);
     });
     if (videoTrack.length === 0) {
         $(document).on('click', '#configget', function() {
             console.log(videoTrack.length);
             if (videoTrack.length !== 0) {return};
-            curSys.getConfigGetAddr();
-           // getVideoConfig(curSys.configPutAddr,videoTrack);
-            //getAudioConfig(curSys.configPutAddr,audioTrack);
+           // getVideoConfig(curSys.configPutURL,videoTrack);
+            //getAudioConfig(curSys.configPutURL,audioTrack);
             getVideoConfig("http://localhost/quick/config.php",videoTrack);
             getAudioConfig("http://localhost/quick/config.php",audioTrack);
         });
     };
+
+    $(document).on('click', '#fileplay', function() {
+         curSys.filePlay();
+    });
     
 
     $(document).on('dblclick', '.track li', function() {
@@ -46,8 +55,6 @@ var main = function() {
     editStream('#audtrack', audioTrack,'#slider',curSys);
 
     $("#vidtrack, #audtrack").sortable();
-
-
     
 };
 $(document).ready(main);

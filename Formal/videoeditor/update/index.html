@@ -5,58 +5,69 @@
         <title>ccsing|cloud editing</title>
         <link rel="stylesheet" href="style/jquery-ui.min.css">
         <link rel="stylesheet" href="style/layout.css">
+        <link rel="stylesheet" href="style/gridster.css">
     </head>
     <body>
         <div id="mainzone" class="zone">
             <div class="filed">
                 <div id="playerzone">
-                <video id="player" src="" controls></video>
+                    <!--   <video id="player" src="" controls></video>-->
+
+                    <div id="flash_context" style="width:640px; height:360px;"></div>
+
+                </div>
+                <div id="galleryzone">
+                    <ul id="list" >
+                    </ul>
+                </div>
             </div>
-            <div id="galleryzone">
-                <ul id="list" >
-                </ul>
+            <div id="info">
+                <span>start time:<input id="starttime" type="text" disabled = "disabled"></span>
+                <span>end time:<input id="endtime" type="text" disabled = "disabled" ></span>
+                <span>length:<input  id="length" type="text"disabled = "disabled"> </span>
             </div>
-        </div>
-        <div id="info">
-            <span>start time:<input id="starttime" type="text" disabled = "disabled"></span>
-            <span>end time:<input id="endtime" type="text" disabled = "disabled" ></span>
-            <span>length:<input  id="length" type="text"disabled = "disabled"> </span>
-        </div>
-        <div class="filed">
-            <div id="slider"></div>
-            <div id="trackzone">
-                <div class="putslider">
-                    <div class="track">
+            <div class="filed">
+                <div id="slider"></div>
+                <div id="trackzone">
+                    <div class="putslider">
+                        <div class="track">
                         <ul id="vidtrack"></ul>
                     </div>
                 </div>
                 <div class="putslider">
                     <div class="track">
-                        <ul id="audtrack"></ul>
-                    </div>
-                </div> 
-            </div>
-            <div id="buttonzone">
-                <button id="startBtn">startup</button>
-                <button id="resourceList">resource list</button>
-                <button id="configget">get config</button>
-                <button>step play</button>
-                <button>view play</button>
-                <button id="output">Output</button>
+                    <ul id="audtrack"></ul>
+                </div>
             </div>
         </div>
+        <div id="buttonzone">
+            <button id="startBtn">startup</button>
+            <button id="resourceList">resource list</button>
+            <button id="configget">get config</button>
+            <button id="fileplay">file play</button>
+            <button>view play</button>
+            <button id="output">Output</button>
+        </div>
     </div>
-    
-    
-    <script src="scripts/jquery/jquery-1.11.1.min.js"></script>
-    <script src="scripts/jquery/jquery-ui.min.js"></script>
-    <script src="scripts/err.js"></script>
-    <script src="scripts/startup.js"></script>
-    <script src="scripts/gallery.js"></script>
-    <script src="scripts/drop.js"></script>
-    <script src="scripts/ajax.js"></script>
-    <script src="scripts/edit.js"></script>
-    <script src="scripts/output.js"></script>
-    <script src="scripts/app.js"></script>
+</div>
+<!---
+<div class='gridster'>
+<ul class='yellow' data-col="1" data-row="2" data-sizex="1" data-sizey="1"></ul>
+</div>
+-->
+<script src="scripts/jquery/jquery-1.11.1.min.js"></script>
+<script src="scripts/jquery/jquery-ui.min.js"></script>
+<!--<script src="scripts/gridster.js"></script>-->
+<script src="scripts/swfobject.js"></script>
+<script src="scripts/ccplayer.js"></script>
+<script src="scripts/play.js"></script>
+<script src="scripts/err.js"></script>
+<script src="scripts/startup.js"></script>
+<script src="scripts/gallery.js"></script>
+<script src="scripts/drop.js"></script>
+<script src="scripts/ajax.js"></script>
+<script src="scripts/edit.js"></script>
+<script src="scripts/output.js"></script>
+<script src="scripts/app.js"></script>
 </body>
 </html>

@@ -54,8 +54,8 @@ var media = function(fileName, fileID, editID, fileStreamAddr, fileHtml) {
     this.getMediaStream = function(me) {
         console.log(this.fileStreamAddr);
         $.ajax({
-            url: this.fileStreamAddr,
-           // url: "http://localhost/quick/streamlist.php",
+            //url: this.fileStreamAddr,
+            url: "http://localhost/quick/streamlist.php",
             success: function(res) {
                 var json = JSON.parse(res);
                 if (json.result === "OK") {
@@ -77,13 +77,50 @@ var media = function(fileName, fileID, editID, fileStreamAddr, fileHtml) {
     };
 };
 var mediaGallery = function(count) {
-    this.items = [];
-    this.count = count;
-    this.getCount = function() {
-        console.log(this.items.length);
-        this.count = this.items.length;
+    var me = this;
+    me.items = [];
+    me.count = count;
+    me.getCount = function() {
+        me.count = me.items.length;
     }
+    me.initGallery = function(res) {
+        var json = JSON.parse(res);
+        if (json.result === "OK") {
+            console.log("http request resource list ok");
+            me.getCount();
+            $.each(json.filelist, function(i, subarr) {
+                var itemId = i + me.count;
+                me.items.push(new media());
+                me.items[itemId].fileName = subarr[0];
+                me.items[itemId].fileID = subarr[1];
+                me.items[itemId].editID = itemId;
+                me.items[itemId].getStreamAddr(curSys.srv_ip, curSys.srv_port, curSys.workDir);
+                me.items[itemId].getHtmlMedia();
+                me.items[itemId].mediaDraggable();
+                me.items[itemId].getMediaStream(me.items[itemId]);
+            });
+            me.count += json.filelist.length;
+        } else {
+            alert("invalid request");
+        }
+    };
+    me.addMediasToGallery = function(targetURL) {
+        if (targetURL !== "") {
+            $.ajax({
+                url: targetURL,
+                success: function(res) {
+                    me.initGallery(res);
+                },
+                error: function(xhr, desc, err) {
+                    getErr(xhr, desc, err)
+                }
+            });
+        } else {
+            alert("invalid startup command!!");
+        };
+    };
 };
+/*
 var initGallery = function(gallery, res) {
     var json = JSON.parse(res);
     if (json.result === "OK") {
@@ -104,4 +141,4 @@ var initGallery = function(gallery, res) {
     } else {
         alert("invalid request");
     }
-};
+};*/
